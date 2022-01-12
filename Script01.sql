@@ -10,36 +10,48 @@ create table poptbl
 	population int
 );
 
-insert into poptbl values('µÂµº', 100);
-insert into poptbl values('Ïã´¨', 200);
-insert into poptbl values('°®æÂ', 150);
-insert into poptbl values('¸ßÖª', 200);
-insert into poptbl values('¸£¸Ô', 300);
-insert into poptbl values('×ôºØ', 100);
-insert into poptbl values('³¤Æé', 200);
-insert into poptbl values('¶«¾©', 400);
-insert into poptbl values('ÈºÂí', 50);
+insert into poptbl values('ï¿½Âµï¿½', 100);
+insert into poptbl values('ï¿½ã´¨', 200);
+insert into poptbl values('ï¿½ï¿½ï¿½ï¿½', 150);
+insert into poptbl values('ï¿½ï¿½Öª', 200);
+insert into poptbl values('ï¿½ï¿½ï¿½ï¿½', 300);
+insert into poptbl values('ï¿½ï¿½ï¿½ï¿½', 100);
+insert into poptbl values('ï¿½ï¿½ï¿½ï¿½', 200);
+insert into poptbl values('ï¿½ï¿½ï¿½ï¿½', 400);
+insert into poptbl values('Èºï¿½ï¿½', 50);
 
 SELECT CASE pref_name
-	WHEN 'µÂµº' THEN 'ËÄ¹ú'
-	WHEN 'Ïã´¨' THEN 'ËÄ¹ú'
-	WHEN '°®æÂ' THEN 'ËÄ¹ú'
-	WHEN '¸ßÖª' THEN 'ËÄ¹ú'
-	WHEN '¸£¸Ô' THEN '¾ÅÖÝ'
-	WHEN '×ôºØ' THEN '¾ÅÖÝ'
-	WHEN '³¤Æé' THEN '¾ÅÖÝ'
-	ELSE 'ÆäËû' END AS district, SUM( population)
+	WHEN 'ï¿½Âµï¿½' THEN 'ï¿½Ä¹ï¿½'
+	WHEN 'ï¿½ã´¨' THEN 'ï¿½Ä¹ï¿½'
+	WHEN 'ï¿½ï¿½ï¿½ï¿½' THEN 'ï¿½Ä¹ï¿½'
+	WHEN 'ï¿½ï¿½Öª' THEN 'ï¿½Ä¹ï¿½'
+	WHEN 'ï¿½ï¿½ï¿½ï¿½' THEN 'ï¿½ï¿½ï¿½ï¿½'
+	WHEN 'ï¿½ï¿½ï¿½ï¿½' THEN 'ï¿½ï¿½ï¿½ï¿½'
+	WHEN 'ï¿½ï¿½ï¿½ï¿½' THEN 'ï¿½ï¿½ï¿½ï¿½'
+	ELSE 'ï¿½ï¿½ï¿½ï¿½' END AS district, SUM( population)
 FROM PopTbl
 GROUP BY CASE pref_name
-	WHEN 'µÂµº' THEN 'ËÄ¹ú'
-	WHEN 'Ïã´¨' THEN 'ËÄ¹ú'
-	WHEN '°®æÂ' THEN 'ËÄ¹ú'
-	WHEN '¸ßÖª' THEN 'ËÄ¹ú'
-	WHEN '¸£¸Ô' THEN '¾ÅÖÝ'
-	WHEN '×ôºØ' THEN '¾ÅÖÝ'
-	WHEN '³¤Æé' THEN '¾ÅÖÝ'
-	ELSE 'ÆäËû' END;
+	WHEN 'ï¿½Âµï¿½' THEN 'ï¿½Ä¹ï¿½'
+	WHEN 'ï¿½ã´¨' THEN 'ï¿½Ä¹ï¿½'
+	WHEN 'ï¿½ï¿½ï¿½ï¿½' THEN 'ï¿½Ä¹ï¿½'
+	WHEN 'ï¿½ï¿½Öª' THEN 'ï¿½Ä¹ï¿½'
+	WHEN 'ï¿½ï¿½ï¿½ï¿½' THEN 'ï¿½ï¿½ï¿½ï¿½'
+	WHEN 'ï¿½ï¿½ï¿½ï¿½' THEN 'ï¿½ï¿½ï¿½ï¿½'
+	WHEN 'ï¿½ï¿½ï¿½ï¿½' THEN 'ï¿½ï¿½ï¿½ï¿½'
+	ELSE 'ï¿½ï¿½ï¿½ï¿½' END;
 
 SELECT *
-FROM mz_test.poptbl p 
+FROM poptbl p 
+
+ALTER TABLE poptbl 
+ADD sex int;
+ALTER TABLE poptbl 
+DROP CONSTRAINT poptbl_pkey
+
+insert into poptbl values('å¾·å²›', 60, 1);
+
+UPDATE poptbl 
+SET population =40, sex = 2
+WHERE pref_name = 'å¾·å²›' AND population = 100
+RETURNING *
 	
