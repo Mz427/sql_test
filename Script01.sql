@@ -1,25 +1,3 @@
-create table poptbl
-(
-	pref_name char(12) primary key,
-	population int
-);
-
-create table poptbl
-(
-	pref_name char(12) primary key,
-	population int
-);
-
-insert into poptbl values('�µ�', 100);
-insert into poptbl values('�㴨', 200);
-insert into poptbl values('����', 150);
-insert into poptbl values('��֪', 200);
-insert into poptbl values('����', 300);
-insert into poptbl values('����', 100);
-insert into poptbl values('����', 200);
-insert into poptbl values('����', 400);
-insert into poptbl values('Ⱥ��', 50);
-
 SELECT CASE pref_name
 	WHEN '�µ�' THEN '�Ĺ�'
 	WHEN '�㴨' THEN '�Ĺ�'
@@ -48,10 +26,19 @@ ADD sex int;
 ALTER TABLE poptbl 
 DROP CONSTRAINT poptbl_pkey
 
-insert into poptbl values('德岛', 60, 1);
+SELECT pref_name,
+	sum(CASE sex WHEN 1 THEN population ELSE 0 END) AS 男,
+	sum(CASE sex WHEN 2 THEN population ELSE 0 END) AS 女
+FROM poptbl p 
+GROUP BY pref_name;
 
-UPDATE poptbl 
-SET population =40, sex = 2
-WHERE pref_name = '德岛' AND population = 100
-RETURNING *
-	
+CREATE TABLE SomeTable
+(
+	p_key char(1) PRIMARY KEY,
+	col_1 int,
+	col_2 char(2)
+)
+INSERT INTO SomeTable VALUES ()
+)
+
+
