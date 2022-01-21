@@ -21,6 +21,30 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: coursemaster; Type: TABLE; Schema: public; Owner: mz
+--
+
+CREATE TABLE public.coursemaster (
+    course_id character(3) NOT NULL,
+    course_name character(20)
+);
+
+
+ALTER TABLE public.coursemaster OWNER TO mz;
+
+--
+-- Name: opencourses; Type: TABLE; Schema: public; Owner: mz
+--
+
+CREATE TABLE public.opencourses (
+    courses_month character(6) NOT NULL,
+    course_id character(3)
+);
+
+
+ALTER TABLE public.opencourses OWNER TO mz;
+
+--
 -- Name: poptbl; Type: TABLE; Schema: public; Owner: mz
 --
 
@@ -45,6 +69,32 @@ CREATE TABLE public.sometable (
 
 
 ALTER TABLE public.sometable OWNER TO mz;
+
+--
+-- Data for Name: coursemaster; Type: TABLE DATA; Schema: public; Owner: mz
+--
+
+COPY public.coursemaster (course_id, course_name) FROM stdin;
+1       会计入门
+2       财务知识
+3       薄记考试
+4       税务师
+\.
+
+
+--
+-- Data for Name: opencourses; Type: TABLE DATA; Schema: public; Owner: mz
+--
+
+COPY public.opencourses (courses_month, course_id) FROM stdin;
+200706  1
+200706  3
+200706  4
+200707  4
+200708  2
+200708  4
+\.
+
 
 --
 -- Data for Name: poptbl; Type: TABLE DATA; Schema: public; Owner: mz
@@ -75,7 +125,18 @@ COPY public.poptbl (pref_name, population, sex) FROM stdin;
 --
 
 COPY public.sometable (p_key, col_1, col_2) FROM stdin;
+a       1       一
+b       2       二
+c       3       三
 \.
+
+
+--
+-- Name: coursemaster coursemaster_pkey; Type: CONSTRAINT; Schema: public; Owner: mz
+--
+
+ALTER TABLE ONLY public.coursemaster
+    ADD CONSTRAINT coursemaster_pkey PRIMARY KEY (course_id);
 
 
 --
@@ -84,6 +145,14 @@ COPY public.sometable (p_key, col_1, col_2) FROM stdin;
 
 ALTER TABLE ONLY public.sometable
     ADD CONSTRAINT sometable_pkey PRIMARY KEY (p_key);
+
+
+--
+-- Name: opencourses opencourses_course_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mz
+--
+
+ALTER TABLE ONLY public.opencourses
+    ADD CONSTRAINT opencourses_course_id_fkey FOREIGN KEY (course_id) REFERENCES public.coursemaster(course_id);
 
 
 --
