@@ -21,72 +21,72 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: coursemaster; Type: TABLE; Schema: public; Owner: mz
+-- Name: coursemaster; Type: TABLE; Schema: mz_test; Owner: mz
 --
 
-CREATE TABLE public.coursemaster (
+CREATE TABLE mz_test.coursemaster (
     course_id character(3) NOT NULL,
     course_name character(20)
 );
 
 
-ALTER TABLE public.coursemaster OWNER TO mz;
+ALTER TABLE mz_test.coursemaster OWNER TO mz;
 
 --
--- Name: opencourses; Type: TABLE; Schema: public; Owner: mz
+-- Name: opencourses; Type: TABLE; Schema: mz_test; Owner: mz
 --
 
-CREATE TABLE public.opencourses (
+CREATE TABLE mz_test.opencourses (
     courses_month character(6) NOT NULL,
     course_id character(3)
 );
 
 
-ALTER TABLE public.opencourses OWNER TO mz;
+ALTER TABLE mz_test.opencourses OWNER TO mz;
 
 --
--- Name: poptbl; Type: TABLE; Schema: public; Owner: mz
+-- Name: poptbl; Type: TABLE; Schema: mz_test; Owner: mz
 --
 
-CREATE TABLE public.poptbl (
+CREATE TABLE mz_test.poptbl (
     pref_name character(12) NOT NULL,
     population integer,
     sex integer
 );
 
 
-ALTER TABLE public.poptbl OWNER TO mz;
+ALTER TABLE mz_test.poptbl OWNER TO mz;
 
 --
--- Name: sometable; Type: TABLE; Schema: public; Owner: mz
+-- Name: sometable; Type: TABLE; Schema: mz_test; Owner: mz
 --
 
-CREATE TABLE public.sometable (
+CREATE TABLE mz_test.sometable (
     p_key character(1) NOT NULL,
     col_1 integer,
     col_2 character(2)
 );
 
 
-ALTER TABLE public.sometable OWNER TO mz;
+ALTER TABLE mz_test.sometable OWNER TO mz;
 
 --
--- Data for Name: coursemaster; Type: TABLE DATA; Schema: public; Owner: mz
+-- Data for Name: coursemaster; Type: TABLE DATA; Schema: mz_test; Owner: mz
 --
 
-COPY public.coursemaster (course_id, course_name) FROM stdin;
-1       会计入门
-2       财务知识
-3       薄记考试
-4       税务师
+COPY mz_test.coursemaster (course_id, course_name) FROM stdin;
+1   会计入门
+2   财务知识
+3   薄记考试
+4   税务师
 \.
 
 
 --
--- Data for Name: opencourses; Type: TABLE DATA; Schema: public; Owner: mz
+-- Data for Name: opencourses; Type: TABLE DATA; Schema: mz_test; Owner: mz
 --
 
-COPY public.opencourses (courses_month, course_id) FROM stdin;
+COPY mz_test.opencourses (courses_month, course_id) FROM stdin;
 200706  1
 200706  3
 200706  4
@@ -97,62 +97,62 @@ COPY public.opencourses (courses_month, course_id) FROM stdin;
 
 
 --
--- Data for Name: poptbl; Type: TABLE DATA; Schema: public; Owner: mz
+-- Data for Name: poptbl; Type: TABLE DATA; Schema: mz_test; Owner: mz
 --
 
-COPY public.poptbl (pref_name, population, sex) FROM stdin;
-德岛            60      1
-德岛            40      2
-香川            100     1
-香川            100     2
-爱媛            100     1
-爱媛            50      2
-高知            100     1
-高知            100     2
-福冈            100     1
-福冈            200     2
-佐贺            20      1
-佐贺            80      2
-长崎            125     1
-长崎            125     2
-东京            250     1
-东京            150     2
+COPY mz_test.poptbl (pref_name, population, sex) FROM stdin;
+德岛    60  1
+德岛    40  2
+香川    100 1
+香川    100 2
+爱媛    100 1
+爱媛    50  2
+高知    100 1
+高知    100 2
+福冈    100 1
+福冈    200 2
+佐贺    20  1
+佐贺    80  2
+长崎    125 1
+长崎    125 2
+东京    250 1
+东京    150 2
 \.
 
 
 --
--- Data for Name: sometable; Type: TABLE DATA; Schema: public; Owner: mz
+-- Data for Name: sometable; Type: TABLE DATA; Schema: mz_test; Owner: mz
 --
 
-COPY public.sometable (p_key, col_1, col_2) FROM stdin;
-a       1       一
-b       2       二
-c       3       三
+COPY mz_test.sometable (p_key, col_1, col_2) FROM stdin;
+a    1  一
+b    2  二
+c    3  三
 \.
 
 
 --
--- Name: coursemaster coursemaster_pkey; Type: CONSTRAINT; Schema: public; Owner: mz
+-- Name: coursemaster coursemaster_pkey; Type: CONSTRAINT; Schema: mz_test; Owner: mz
 --
 
-ALTER TABLE ONLY public.coursemaster
+ALTER TABLE ONLY mz_test.coursemaster
     ADD CONSTRAINT coursemaster_pkey PRIMARY KEY (course_id);
 
 
 --
--- Name: sometable sometable_pkey; Type: CONSTRAINT; Schema: public; Owner: mz
+-- Name: sometable sometable_pkey; Type: CONSTRAINT; Schema: mz_test; Owner: mz
 --
 
-ALTER TABLE ONLY public.sometable
+ALTER TABLE ONLY mz_test.sometable
     ADD CONSTRAINT sometable_pkey PRIMARY KEY (p_key);
 
 
 --
--- Name: opencourses opencourses_course_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mz
+-- Name: opencourses opencourses_course_id_fkey; Type: FK CONSTRAINT; Schema: mz_test; Owner: mz
 --
 
-ALTER TABLE ONLY public.opencourses
-    ADD CONSTRAINT opencourses_course_id_fkey FOREIGN KEY (course_id) REFERENCES public.coursemaster(course_id);
+ALTER TABLE ONLY mz_test.opencourses
+    ADD CONSTRAINT opencourses_course_id_fkey FOREIGN KEY (course_id) REFERENCES mz_test.coursemaster(course_id);
 
 
 --

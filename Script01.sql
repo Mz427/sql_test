@@ -1,9 +1,9 @@
-CREATE TABLE StudentClub
+CREATE TABLE Greatests
 (
-	std_id char(3),
-	club_id char(1),
-	club_name char(6),
-	main_club_flg char(1)
+	key_id char(1),
+	x_id int,
+	y_id int,
+	z_id int
 );
 ALTER TABLE poptbl 
 ADD sex int;
@@ -11,7 +11,9 @@ ALTER TABLE opencourses
 DROP CONSTRAINT opencourses_pkey;
 ALTER TABLE opencourses 
 RENAME month TO courses_month;
+ALTER TABLE greatests SET SCHEMA mz_test;
 TRUNCATE coursemaster RESTART IDENTITY;
+DROP TABLE Greatests ;
 UPDATE SomeTable 
 SET p_key = CASE p_key 
 	WHEN 'a' THEN 'c'
@@ -19,21 +21,17 @@ SET p_key = CASE p_key
 	ELSE p_key 
 	END 
 WHERE p_key IN ('a', 'c');
-INSERT INTO studentclub 
+INSERT INTO Greatests  
 VALUES 
-('100', '1', '棒球', 'Y'),
-('100', '2', '管弦乐', 'N'),
-('200', '2', '管弦乐', 'N'),
-('200', '3', '羽毛球', 'Y'),
-('200', '4', '足球', 'N'),
-('300', '4', '足球', 'N'),
-('400', '5', '游泳', 'N'),
-('500', '6', '围棋', 'N');
+('A', 1, 2, 3),
+('B', 5, 5, 2),
+('C', 4, 7, 1),
+('D', 3, 3, 8);
 SELECT *
 FROM pg_catalog.pg_tables 
 WHERE tableowner = 'mz';
 SELECT *
-FROM studentclub;
+FROM Greatests ;
 
 /*****************************************************************************/
 SELECT CASE pref_name
@@ -57,8 +55,8 @@ GROUP BY CASE pref_name
 	ELSE '����' END;
 
 SELECT pref_name,
-	sum(CASE sex WHEN 1 THEN population ELSE 0 END) AS 男,
-	sum(CASE sex WHEN 2 THEN population ELSE 0 END) AS 女
+	sum(CASE sex WHEN 1 THEN population ELSE 0 END) AS �?,
+	sum(CASE sex WHEN 2 THEN population ELSE 0 END) AS �?
 FROM poptbl p 
 GROUP BY pref_name;
 
@@ -127,3 +125,21 @@ SELECT course_name,
 FROM coursemaster c;
 
 /*****************************************************************************/
+SELECT key_id,
+	CASE WHEN x_id >= y_id 
+		THEN 
+		(
+			CASE WHEN x_id >= z_id 
+				THEN x_id 
+				ELSE z_id 
+			END
+		)
+		ELSE
+		(
+			CASE WHEN y_id >= z_id 
+				THEN y_id 
+				ELSE z_id 
+			END
+		)
+	END AS "max_xyz_id"
+FROM Greatests;
