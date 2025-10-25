@@ -16,19 +16,15 @@ CREATE TABLE public.movie_info
 
     FOREIGN KEY(actress) REFERENCES actresses(name1) ON DELETE SET DEFAULT
 );
-SELECT *
-FROM actresses;
-DROP table movies;
 ALTER TABLE movie_info ADD COLUMN theme CHAR(2);
 ALTER TABLE movie_info RENAME COLUMN theme TO movie_theme;
-INSERT INTO movie_info
-VALUES
-('H4610-KI200823', '2020-08-22', '下山真由美', NULL, 'CC');
-INSERT INTO actresses
-VALUES
-('美智子小夜曲', 'Michiko Serenade', '內田美奈子', '1980-11-16', 'JP');
-UPDATE actresses
-SET birthday = '1980-02-18'
-WHERE name1 = '美智子小夜曲';
+SELECT *
+FROM actresses LEFT JOIN movie_info;
 SELECT *
 FROM movie_info;
+INSERT INTO movie_info
+VALUES
+('MDYD-987', '2015-01-10', '涼宮琴音', NULL, NULL);
+UPDATE movie_info
+SET movie_id = 'MIAD-738'
+WHERE movie_id = 'MIDA-738';
