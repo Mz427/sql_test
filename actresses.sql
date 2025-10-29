@@ -1,4 +1,4 @@
--- Active: 1761285273419@@10.6.7.148@5432@db_mz
+-- Active: 1760379344819@@10.6.7.148@5432@db_mz
 CREATE TABLE public.actresses
 (
     name1 VARCHAR(20) PRIMARY KEY,
@@ -41,3 +41,5 @@ VALUES
 UPDATE movie_info
 SET movie_id = 'MIAD-738'
 WHERE movie_id = 'MIDA-738';
+SELECT COALESCE(name2, 'aaa')
+FROM actresses;
