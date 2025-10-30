@@ -1,4 +1,4 @@
--- Active: 1760379344819@@10.6.7.148@5432@db_mz
+-- Active: 1761285273419@@10.6.7.148@5432@db_mz
 CREATE TABLE public.actresses
 (
     name1 VARCHAR(20) PRIMARY KEY,
@@ -24,22 +24,21 @@ SELECT *
 FROM actresses
 -- WHERE name1 LIKE '%天%'
 ;
-SELECT t1.name1, COUNT(t2.movie_id) AS movie_count
+SELECT t1.name1, count(t2.movie_id)
 FROM actresses AS t1 LEFT JOIN movie_info AS t2
 ON t1.name1 = t2.actress
-GROUP BY t1.name1
-HAVING COUNT(t2.movie_id) >= 2;
+GROUP BY t1.name1;
 INSERT INTO movie_info
 VALUES
-('IPZ-721', '2016-03-26', '天海つばさ', 'magnet:?xt=urn:btih:91487C53DD01282AE2EA98B48C5B53A106C72EB2&size=4977720668&biz=ktr', NULL),
-('SSPD-133', '2017-02-11', '天海つばさ', 'magnet:?xt=urn:btih:9B89923278E7A1218DC593B15A628A75D9001C9E&size=2876746156&biz=ktr', NULL)
+('WANZ-962', '2020-06-27', '花音うらら', '/MzBackup00/Medias/Movies/Others/bts/', NULL),
+('MBDD-2095', '2023-09-15', '花音うらら', '/MzBackup00/Medias/Movies/Others/bts/', NULL)
 ;
 INSERT INTO actresses
 VALUES
-('白桃はな', 'Shirato Hana', '白桃花', '2000-05-12', 'JP')
+('花音うらら', 'Hanane Urara', '花音麗', '2000-11-11', 'JP')
 ;
 UPDATE movie_info
 SET movie_id = 'MIAD-738'
 WHERE movie_id = 'MIDA-738';
-SELECT COALESCE(name2, 'aaa')
-FROM actresses;
+SELECT *
+FROM movie_info;
