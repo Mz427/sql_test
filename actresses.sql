@@ -1,4 +1,4 @@
--- Active: 1761285273419@@10.6.7.148@5432@db_mz
+-- Active: 1760379344819@@10.6.7.148@5432@db_mz
 CREATE TABLE public.actresses
 (
     name1 VARCHAR(20) PRIMARY KEY,
@@ -35,7 +35,7 @@ VALUES
 ;
 INSERT INTO actresses
 VALUES
-('花音うらら', 'Hanane Urara', '花音麗', '2000-11-11', 'JP')
+('坂井なるは', 'Sakai Naruha', '坂井成羽', '2002-09-30', 'JP')
 ;
 UPDATE movie_info
 SET movie_id = 'MIAD-738'
