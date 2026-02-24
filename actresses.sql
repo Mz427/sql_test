@@ -1,4 +1,4 @@
--- Active: 1761285273419@@10.6.7.148@5432@db_mz
+-- Active: 1760379344819@@10.6.7.148@5432@db_mz
 CREATE TABLE public.actresses
 (
     name1 VARCHAR(20) PRIMARY KEY,
@@ -19,11 +19,12 @@ CREATE TABLE public.movie_info
 ALTER TABLE movie_info ADD COLUMN theme CHAR(2);
 ALTER TABLE movie_info RENAME COLUMN theme TO movie_theme;
 DROP TABLE schema_test.table_test;
+
 SELECT *
 -- FROM movie_info
 FROM actresses
 -- WHERE name1 LIKE '%天%'
-;
+ORDER BY birthday DESC ;
 SELECT t1.name1, count(t2.movie_id)
 FROM actresses AS t1 LEFT JOIN movie_info AS t2
 ON t1.name1 = t2.actress
@@ -37,5 +38,3 @@ VALUES
 UPDATE movie_info
 SET movie_id = 'MIAD-738'
 WHERE movie_id = 'MIDA-738';
-SELECT *
-FROM movie_info;
