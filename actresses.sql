@@ -28,15 +28,12 @@ SELECT t1.name1, count(t2.movie_id)
 FROM actresses AS t1 LEFT JOIN movie_info AS t2
 ON t1.name1 = t2.actress
 GROUP BY t1.name1;
-INSERT INTO movie_info
-VALUES
-('WANZ-962', '2020-06-27', '花音うらら', '/MzBackup00/Medias/Movies/Others/bts/', NULL),
-('MBDD-2095', '2023-09-15', '花音うらら', '/MzBackup00/Medias/Movies/Others/bts/', NULL)
-;
 INSERT INTO actresses
 VALUES
-('花音うらら', 'Hanane Urara', '花音麗', '2000-11-11', 'JP')
-;
+('水谷梨明日', 'Mizutani Riasu', NULL, NULL, 'JP');
+INSERT INTO movie_info
+VALUES
+('MTALL-137', '2024-12-19', '水谷梨明日', NULL, NULL);
 UPDATE movie_info
 SET movie_id = 'MIAD-738'
 WHERE movie_id = 'MIDA-738';
