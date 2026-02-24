@@ -21,10 +21,10 @@ ALTER TABLE movie_info RENAME COLUMN theme TO movie_theme;
 DROP TABLE schema_test.table_test;
 
 SELECT *
--- FROM movie_info
 FROM actresses
+-- FROM movie_info
 -- WHERE name1 LIKE '%天%'
-ORDER BY birthday DESC ;
+;
 SELECT t1.name1, count(t2.movie_id)
 FROM actresses AS t1 LEFT JOIN movie_info AS t2
 ON t1.name1 = t2.actress
