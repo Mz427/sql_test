@@ -19,7 +19,6 @@ CREATE TABLE public.movie_info
 ALTER TABLE movie_info ADD COLUMN theme CHAR(2);
 ALTER TABLE movie_info RENAME COLUMN theme TO movie_theme;
 DROP TABLE schema_test.table_test;
-
 SELECT *
 FROM actresses
 -- FROM movie_info
